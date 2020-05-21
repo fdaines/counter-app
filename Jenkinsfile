@@ -10,6 +10,15 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
+                step('bla1') {
+                    echo "jajajajja"
+                }
+                step('bla2') {
+                    echo "jajajajja"
+                }
+                step('install') {
+
+                }
                 sh 'npm install'
             }
         }
