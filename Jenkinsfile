@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.6.10-alpine3.11'
+            image 'node:10-alpine'
         }
     }
     environment {
