@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Check') {
             steps {
-                sh './scripts/check-destination.sh'
+                sh 'sh ./scripts/check-destination.sh'
             }
         }
         stage('Deliver') {
