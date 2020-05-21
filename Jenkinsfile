@@ -23,8 +23,14 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Check') {
+            steps {
+                sh './scripts/check-destination.sh'
+            }
+        }
         stage('Deliver') {
             steps {
+                sh check-destination.sh
                 echo 'ok'
             }
         }
