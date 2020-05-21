@@ -24,7 +24,7 @@ pipeline {
             }
         }
         stage('Check') {
-            agent { docker 'mcr.microsoft.com/azure-cli' } 
+            agent { docker 'mcr.microsoft.com/azure-cli:latest' } 
             steps {
                 sh 'sh ./scripts/check-destination.sh'
             }
