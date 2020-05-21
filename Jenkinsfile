@@ -24,6 +24,10 @@ pipeline {
         }
         stage('Check') {
             agent { docker 'mcr.microsoft.com/azure-cli:latest' }
+            environment {
+                AZURE_STORAGE_ACCOUNT = credentials('AZURE_STORAGE_ACCOUNT')
+                AZURE_STORAGE_KEY = credentials('AZURE_STORAGE_KEY')
+            }
             steps {
                 sh 'sh ./scripts/check-destination.sh'
             }
