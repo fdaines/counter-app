@@ -10,22 +10,13 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                step('bla1') {
-                    echo "jajajajja"
-                }
-                step('bla2') {
-                    echo "jajajajja"
-                }
-                step('install') {
-
-                }
                 sh 'npm install'
             }
         }
         stage('Test') {
             steps {
                 echo 'ok'
-            }
+                }
         }
         stage('Build') {
             steps {
@@ -33,6 +24,7 @@ pipeline {
             }
         }
         stage('Check') {
+            agent { docker 'mcr.microsoft.com/azure-cli' } 
             steps {
                 sh 'sh ./scripts/check-destination.sh'
             }
