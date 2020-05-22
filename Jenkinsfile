@@ -22,7 +22,6 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        }
         stage('Deliver') {
             agent { docker 'mcr.microsoft.com/azure-cli:latest' }
             environment {
