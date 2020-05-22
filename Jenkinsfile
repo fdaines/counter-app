@@ -22,17 +22,20 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Check') {
+        }
+        stage('Deliver') {
             agent { docker 'mcr.microsoft.com/azure-cli:latest' }
             environment {
                 AZURE_STORAGE_ACCOUNT = credentials('AZURE_STORAGE_ACCOUNT')
                 AZURE_STORAGE_KEY = credentials('AZURE_STORAGE_KEY')
             }
             steps {
-                sh 'sh ./scripts/check-destination.sh'
+              sh 'sh ./scripts/check-destination.sh'
+              sh 'sh ./scripts/clean-destination.sh'
+              sh 'sh ./scripts/deploy-to-destination.sh'
             }
         }
-        stage('Deliver') {
+        stage('Validation') {
             steps {
                 echo 'ok'
             }
